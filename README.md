@@ -35,10 +35,9 @@ make uninstall
 Usage
 -----
 
-Envoi sms:
+Launch daemon
+sudo gammu-smsd -c '/home/<user>/.gammurc'
+
+Send sms:
 
 bin/send_sms
-
-Réception sms:
-
-gammu-smsd -c ~/.gammurc
