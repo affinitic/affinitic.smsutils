@@ -35,4 +35,10 @@ make uninstall
 Usage
 -----
 
+Envoi sms:
+
 bin/send_sms
+
+Réception sms:
+
+gammu-smsd -c ~/.gammurc
