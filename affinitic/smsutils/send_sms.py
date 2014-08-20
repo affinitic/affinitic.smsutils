@@ -1,17 +1,18 @@
 #-*- coding:utf-8 -*-
-try:
-    import gammu
-except:
-    raise(ImportError("""gammu library not found, is it installed in your python environnement? Did you export dist-packages ?
-        export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages"""))
-
 import ConfigParser
 import argparse
+
+""" les numeros de telephonne et les groupes de numéros se trouve dans fichier
+sms.cfg
+récupération des informations fournie via terminal
+(section = groupe def dans sms.cfg - message = "le message txt") """
+
 
 class phone_numbers():
     def __init__(self, section, message):
         self.section = section
         self.message = message
+
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -20,31 +21,21 @@ def get_args():
 
     return parser.parse_args()
 
-def main():
-    args = get_args()
 
+def send_sms(section, message):
     config = ConfigParser.RawConfigParser()
     config.read('sms.cfg')
+    section = config.items(section)
+    nom, number = section[0]
 
-    # Initialisation
-    sm = gammu.StateMachine()
-    sm.ReadConfig(Filename='/home/jenny/.gammurc')
-    sm.Init()
+    import gammu.smsd
+    smsd = gammu.smsd.SMSD('/home/jenny/.gammurc')
 
-    section = config.items(args.section)
-    
-    for nom, number in section:
-        print(number)
-        # Entrer le code PIN si demandé
-        if sm.GetSecurityStatus() == 'PIN':
-            sm.EnterSecurityCode('PIN', 'XXXX')
+    message = {'Text': 'Hello {0}.\n{1}'.format(nom, message), 'SMSC': {'Location': 1}, 'Number': number}
 
-        # Données du message
-        message = {
-            'Text': 'Hello {0}.\n{1}'.format(nom, args.message),
-            'SMSC': {'Location': 1},
-            'Number': number
-        }
+    smsd.InjectSMS([message])
 
-        # Envoi du message
-        sm.SendSMS(message)
+
+def main():
+    args = get_args()
+    send_sms(args.section, args.message)
