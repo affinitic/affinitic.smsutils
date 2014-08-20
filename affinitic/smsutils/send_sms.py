@@ -1,7 +1,7 @@
 #-*- coding:utf-8 -*-
 import ConfigParser
 import argparse
-
+import gammu.smsd
 """ les numeros de telephonne et les groupes de numéros se trouve dans fichier
 sms.cfg
 récupération des informations fournie via terminal
@@ -22,20 +22,19 @@ def get_args():
     return parser.parse_args()
 
 
-def send_sms(section, message):
+def send_sms(section, message, sender=None):
+
     config = ConfigParser.RawConfigParser()
     config.read('sms.cfg')
     section = config.items(section)
     nom, number = section[0]
 
-    import gammu.smsd
     smsd = gammu.smsd.SMSD('/home/jenny/.gammurc')
 
     for nom, number in section:
-        print(number)
-        message_send = {'Text': 'Hello {0}.\n{1}'.format(nom, message), 'SMSC': {'Location': 1}, 'Number': number}
-
-        smsd.InjectSMS([message_send])
+        if sender != number:
+            message_send = {'Text': 'Hello {0}.\n{1}'.format(nom, message), 'SMSC': {'Location': 1}, 'Number': number}
+            smsd.InjectSMS([message_send])
 
 
 def main():
