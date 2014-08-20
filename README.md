@@ -22,22 +22,23 @@ This need the user to reconnect his session.
 Installation
 ------------
 
-git clone
-make install
-
+    git clone
+    make install
+You have to disconnect current user because we added it to some groups
 
 Uninstall
 ---------
 
-make uninstall
+    make uninstall
 
 
 Usage
 -----
 
 Launch daemon
-sudo gammu-smsd -c '/home/<user>/.gammurc'
+
+    sudo gammu-smsd -c '/home/<user>/.gammurc'
 
 Send sms:
 
-bin/send_sms
+    bin/send_sms
