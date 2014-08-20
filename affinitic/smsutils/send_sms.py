@@ -31,9 +31,11 @@ def send_sms(section, message):
     import gammu.smsd
     smsd = gammu.smsd.SMSD('/home/jenny/.gammurc')
 
-    message = {'Text': 'Hello {0}.\n{1}'.format(nom, message), 'SMSC': {'Location': 1}, 'Number': number}
+    for nom, number in section:
+        print(number)
+        message_send = {'Text': 'Hello {0}.\n{1}'.format(nom, message), 'SMSC': {'Location': 1}, 'Number': number}
 
-    smsd.InjectSMS([message])
+        smsd.InjectSMS([message_send])
 
 
 def main():
