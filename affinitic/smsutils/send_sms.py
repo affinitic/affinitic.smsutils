@@ -26,10 +26,12 @@ def send_sms(section, message, sender=None):
 
     config = ConfigParser.RawConfigParser()
     config.read('sms.cfg')
+    
     section = config.items(section)
     nom, number = section[0]
+    config_smsd = config.get('options', 'config_smsd')
 
-    smsd = gammu.smsd.SMSD('/home/jenny/.gammurc')
+    smsd = gammu.smsd.SMSD(config_smsd)
 
     for nom, number in section:
         if sender != number:
