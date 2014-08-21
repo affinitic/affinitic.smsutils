@@ -22,6 +22,12 @@ This need the user to reconnect his session.
 Installation
 ------------
 
+Add this line to your .bashrc / .zshrc this will allow virtuaenv to use dist-packages
+
+    export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages
+
+Then do
+
     git clone
     make install
 You have to disconnect current user because we added it to some groups
