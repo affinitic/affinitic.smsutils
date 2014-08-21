@@ -26,7 +26,7 @@ def send_sms(section, message, sender=None):
 
     config = ConfigParser.RawConfigParser()
     config.read('sms.cfg')
-    
+
     section = config.items(section)
     nom, number = section[0]
     config_smsd = config.get('options', 'config_smsd')

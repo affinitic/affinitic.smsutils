@@ -2,8 +2,6 @@
 import os
 
 from affinitic.smsutils.send_sms import send_sms
-#import sys
-
 
 #numparts = int(os.environ['DECODED_PARTS'])
 
@@ -16,7 +14,6 @@ def name_send_sms(number_sms):
     section = config.items('all_num')
     for nom, number in section:
         if number == number_sms:
-            print nom
             return nom
     return number_sms
 
@@ -25,5 +22,5 @@ def main():
     #donnée recup du os.environ
     sms_receive = (os.environ['SMS_1_TEXT'])
     number_sms = (os.environ['SMS_1_NUMBER'])
-    sms_message = name_send_sms(number_sms) + ' a envoyé un sms: ' + sms_receive
+    sms_message = name_send_sms(number_sms) + ' a envoye un sms: ' + sms_receive
     send_sms("all_num", sms_message, sender=number_sms)
