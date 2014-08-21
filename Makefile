@@ -8,7 +8,7 @@ install:
 
 
 uninstall:
-	sudo apt-get remove gammu
+	sudo apt-get remove gammu gammu-smsd python-gammu
 	rm -rf affinitic.smsutils.egg-info bin develop-eggs eggs include lib local parts .installed.cfg 
 	sudo deluser $(USER) dialout
 
