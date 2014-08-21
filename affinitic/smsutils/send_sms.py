@@ -1,4 +1,5 @@
 #-*- coding:utf-8 -*-
+import os
 import ConfigParser
 import argparse
 import gammu.smsd
@@ -25,7 +26,8 @@ def get_args():
 def send_sms(section, message, sender=None):
 
     config = ConfigParser.RawConfigParser()
-    config.read('sms.cfg')
+    sms_config_path = os.environ['SMS_CONFIG_PATH']
+    config.read(sms_config_path)
 
     section = config.items(section)
     nom, number = section[0]

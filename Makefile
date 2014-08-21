@@ -5,6 +5,7 @@ install:
 	bin/buildout
 	sudo adduser $(USER) dialout
 	sudo adduser $(USER) gammu
+	sudo adduser $(USER) tty
 
 
 uninstall:

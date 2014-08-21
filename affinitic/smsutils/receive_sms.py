@@ -10,7 +10,8 @@ from affinitic.smsutils.send_sms import send_sms
 def name_send_sms(number_sms):
     import ConfigParser
     config = ConfigParser.RawConfigParser()
-    config.read('sms.cfg')
+    sms_config_path = os.environ['SMS_CONFIG_PATH']
+    config.read(sms_config_path)
     section = config.items('all_num')
     for nom, number in section:
         if number == number_sms:
