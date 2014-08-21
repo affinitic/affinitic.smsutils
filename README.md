@@ -43,7 +43,7 @@ Usage
 
 Launch daemon
 
-    sudo gammu-smsd -c '/home/<user>/.gammurc'
+    gammu-smsd -c '/home/<user>/.gammurc'
 
 Send sms:
 
