@@ -1,5 +1,5 @@
 install: 
-	sudo apt-get install gammu gammu-smsd
+	sudo apt-get install gammu gammu-smsd python-gammu
 	virtualenv -p python2.7 .
 	bin/python bootstrap.py
 	bin/buildout
