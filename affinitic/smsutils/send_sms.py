@@ -17,9 +17,19 @@ def get_args():
     return parser.parse_args()
 
 
-def send_sms(section, message, sender=None):
+def message_decomp(message_inject):
+    liste = []
+    step = 160
+    for i in range(0, len(message_inject), 160):
+        slice = message_inject[i:step]
+        step += 160
+        liste.append(slice)
+    return liste
 
-    message = message.decode('utf-8')
+
+def send_sms(section, message_inject, sender=None):
+
+    message_inject = message_inject.decode('utf-8')
     config = ConfigParser.RawConfigParser()
     sms_config_path = os.environ['SMS_CONFIG_PATH']
     config.read(sms_config_path)
@@ -29,11 +39,14 @@ def send_sms(section, message, sender=None):
     config_smsd = config.get('options', 'config_smsd')
 
     smsd = gammu.smsd.SMSD(config_smsd)
+    liste_message = message_decomp(message_inject)
 
     for nom, number in section:
         if sender != number:
-            message_send = {'Text': u'Hello {0}.\n{1}'.format(nom, message), 'SMSC': {'Location': 1}, 'Number': number}
-            smsd.InjectSMS([message_send])
+            for message in liste_message:
+                message_send = {'Text': u'Hello {0}.\n{1}'.format(nom, message), 'SMSC': {'Location': 1}, 'Number': number}
+                smsd.InjectSMS([message_send])
+                #print message_send
 
 
 def main():

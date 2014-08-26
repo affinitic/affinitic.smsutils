@@ -21,7 +21,7 @@ def name_send_sms(number_sms):
 
 def main():
     #donnée recup du os.environ
-    sms_receive = (os.environ['SMS_1_TEXT'])
     number_sms = (os.environ['SMS_1_NUMBER'])
+    sms_receive = (os.environ['SMS_1_TEXT'])
     sms_message = name_send_sms(number_sms) + ' a envoye un sms: ' + sms_receive
     send_sms("all_num", sms_message, sender=number_sms)
