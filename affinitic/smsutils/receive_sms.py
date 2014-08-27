@@ -3,11 +3,9 @@ import os
 
 from affinitic.smsutils.send_sms import send_sms
 
-#numparts = int(os.environ['DECODED_PARTS'])
 
-
-# Are there any decoded parts?
 def name_send_sms(number_sms):
+    # recovery name person to send sms
     import ConfigParser
     config = ConfigParser.RawConfigParser()
     sms_config_path = os.environ['SMS_CONFIG_PATH']
@@ -20,8 +18,15 @@ def name_send_sms(number_sms):
 
 
 def main():
-    #donnée recup du os.environ
+    #telephon number to send sms
     number_sms = (os.environ['SMS_1_NUMBER'])
-    sms_receive = (os.environ['SMS_1_TEXT'])
-    sms_message = name_send_sms(number_sms) + ' a envoye un sms: ' + sms_receive
+    #number messages receive
+    numparts = int(os.environ['SMS_MESSAGES'])
+    # Get all text parts
+    text = ''
+    for i in range(1, numparts + 1):
+        varname = 'SMS_%d_TEXT' % i
+        if varname in os.environ:
+            text = text + os.environ[varname]
+    sms_message = name_send_sms(number_sms) + ' a envoye un sms: ' + text
     send_sms("all_num", sms_message, sender=number_sms)

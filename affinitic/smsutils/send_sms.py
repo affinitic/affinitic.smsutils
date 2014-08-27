@@ -20,6 +20,7 @@ def get_args():
 def message_decomp(message_inject):
     liste = []
     step = 160
+
     for i in range(0, len(message_inject), 160):
         slice = message_inject[i:step]
         step += 160
@@ -42,11 +43,11 @@ def send_sms(section, message_inject, sender=None):
     liste_message = message_decomp(message_inject)
 
     for nom, number in section:
+
         if sender != number:
             for message in liste_message:
-                message_send = {'Text': u'Hello {0}.\n{1}'.format(nom, message), 'SMSC': {'Location': 1}, 'Number': number}
+                message_send = {'Text': unicode(message), 'SMSC': {'Location': 1}, 'Number': number}
                 smsd.InjectSMS([message_send])
-                #print message_send
 
 
 def main():
