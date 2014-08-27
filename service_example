@@ -1,0 +1,16 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          sms-affinitic
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Sms daemon for gammu
+### END INIT INFO
+export LANG="fr_BE.UTF-8"
+export LC_CTYPE="fr_BE.UTF-8"
+export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages
+export SMS_CONFIG_PATH=/home/pi/buildout/affinitic.smsutils/sms.cfg
+
+start-stop-daemon --start --quiet --pidfile /var/run/sms-affinitic.pid --chuid pi:pi --exec /usr/bin/gammu-smsd -- -c /home/pi/.gammurc
+exit 0

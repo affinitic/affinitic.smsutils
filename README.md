@@ -36,10 +36,19 @@ Then do
     make install
 You have to disconnect current user because we added it to some groups
 
+
 Uninstall
 ---------
 
     make uninstall
+
+
+Other configuration
+-------------------
+
+Gammu smsd daemon use a gammurc file specified when launching the daemon. You can see the gammurc_example file for an example of configuration.
+
+If you want to set smsd daemon to launch at startup, see the service_example file.
 
 
 Usage
