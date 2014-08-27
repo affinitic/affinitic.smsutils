@@ -26,7 +26,7 @@ Add this line to your .bashrc / .zshrc this will allow virtuaenv to use dist-pac
 
     export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages
     
-Add this line to your .bashrc / .zshrc this allow python script to access configuration file
+Add this line to your .bashrc / .zshrc this allow python script to access configuration file. See the sms.cfg_example for the syntax
 
     export SMS_CONFIG_PATH=/home/<user>/buildout/affinitic.smsutils/sms.cfg
 

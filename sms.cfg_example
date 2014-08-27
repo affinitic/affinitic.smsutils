@@ -1,0 +1,12 @@
+[all_num]
+Tintin = +32488012345
+Haddock = +32488543210
+Milou = +32488333222
+Dupont = +32488111000
+
+[blocker]
+Tintin = +32488012345
+Haddock = +32488543210
+
+[nagios]
+Milou = +32488333222
