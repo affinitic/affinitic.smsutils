@@ -1,3 +1,6 @@
+[options]
+config_smsd = /home/pi/.gammurc
+
 [all_num]
 Tintin = +32488012345
 Haddock = +32488543210

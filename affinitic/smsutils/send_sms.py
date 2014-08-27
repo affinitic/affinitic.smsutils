@@ -36,7 +36,6 @@ def send_sms(section, message_inject, sender=None):
     config.read(sms_config_path)
 
     section = config.items(section)
-    nom, number = section[0]
     config_smsd = config.get('options', 'config_smsd')
 
     smsd = gammu.smsd.SMSD(config_smsd)
