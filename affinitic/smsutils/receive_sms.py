@@ -28,5 +28,5 @@ def main():
         varname = 'SMS_%d_TEXT' % i
         if varname in os.environ:
             text = text + os.environ[varname]
-    sms_message = name_send_sms(number_sms) + ' a envoye un sms: ' + text
+    sms_message = name_send_sms(number_sms) + ' dit: ' + text
     send_sms("all_num", sms_message, sender=number_sms)
