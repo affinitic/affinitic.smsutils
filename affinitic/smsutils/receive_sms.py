@@ -13,7 +13,7 @@ def name_send_sms(number_sms):
     section = config.items('all_num')
     for nom, number in section:
         if number == number_sms:
-            return nom
+            return nom.capitalize()
     return number_sms
 
 
