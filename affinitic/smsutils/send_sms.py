@@ -43,10 +43,9 @@ def send_sms(section, message_inject, sender=None):
 
     for nom, number in section:
 
-        if sender != number:
-            for message in liste_message:
-                message_send = {'Text': unicode(message), 'SMSC': {'Location': 1}, 'Number': number}
-                smsd.InjectSMS([message_send])
+        for message in liste_message:
+            message_send = {'Text': unicode(message), 'SMSC': {'Location': 1}, 'Number': number}
+            smsd.InjectSMS([message_send])
 
 
 def main():
