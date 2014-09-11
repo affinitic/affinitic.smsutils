@@ -26,12 +26,16 @@ setup(name='affinitic.smsutils',
       namespace_packages=['affinitic'],
       include_package_data=True,
       zip_safe=False,
-      install_requires=[],
+      install_requires=[
+      'pyzmq',
+      ],
       extras_require=dict(),
       entry_points="""
       [console_scripts]
       send_sms = affinitic.smsutils.send_sms:main
       receive_sms = affinitic.smsutils.receive_sms:main
+      zmq_server = affinitic.smsutils.zmq_server:main
+      zmq_client = affinitic.smsutils.zmq_client:main
       """,
 
       )
