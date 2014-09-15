@@ -9,7 +9,7 @@ import zmq
 def main():
     context = zmq.Context()
     socket = context.socket(zmq.REP)
-    socket.bind("tcp://192.168.1.1:5555")
+    socket.bind("tcp://192.168.99.121:5555")
 
     while True:
         message = socket.recv()

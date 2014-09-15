@@ -4,19 +4,25 @@
 #   Sends "Hello" to server, expects "World" back
 #
 import zmq
+import argparse
+
+
+def get_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('message')
+
+    return parser.parse_args()
 
 
 def main():
-    #  Prepare our context and sockets
+    args = get_args()
+
+    # Prepare our context and sockets
     context = zmq.Context()
     socket = context.socket(zmq.REQ)
-    socket.connect("tcp://192.168.1.1:5555")
+    socket.connect("tcp://192.168.99.121:5555")
 
-    # TRAC lance ce script en asynchrone du trac, il ne se finira pas tant que le
-    # raspberry n'aura pas repondu
-
-    #  Do 10 requests, waiting each time for a response
-    for request in range(1, 11):
-        socket.send("Hello")
-        message = socket.recv()
-        print("Received reply %s [%s]" % (request, message))
+    socket.send(args.message)
+    
+    message = socket.recv()
+    print("Received reply %s" % message)
