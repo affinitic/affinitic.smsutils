@@ -27,7 +27,6 @@ setup(name='affinitic.smsutils',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-      'pyzmq',
       ],
       extras_require=dict(),
       entry_points="""
