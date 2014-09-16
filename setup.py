@@ -33,7 +33,7 @@ setup(name='affinitic.smsutils',
       entry_points="""
       [console_scripts]
       send_sms = affinitic.smsutils.send_sms:main
-      receive_sms = affinitic.smsutils.receive_sms:mai
+      receive_sms = affinitic.smsutils.receive_sms:main
       """,
 
       )
