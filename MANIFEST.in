@@ -1,0 +1,9 @@
+exclude *.cfg_example
+exclude Makefile
+exclude bootstrap.py
+exclude buildout.cfg
+exclude gammurc_example
+exclude service_example
+include *.md
+include setup.py
+recursive-include affinitic
