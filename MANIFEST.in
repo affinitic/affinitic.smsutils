@@ -6,4 +6,6 @@ exclude gammurc_example
 exclude service_example
 include *.rst
 include setup.py
+include *.txt
 recursive-include affinitic
+
