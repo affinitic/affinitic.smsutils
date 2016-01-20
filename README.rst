@@ -52,3 +52,16 @@ Launch daemon
 Send sms:
 
     bin/send_sms
+
+
+Credits
+-------
+
+This package was developed by `Affinitic team <https://github.com/affinitic>`_.
+
+.. image:: http://www.affinitic.be/affinitic_logo.png
+   :alt: Affinitic website
+   :target: http://www.affinitic.be
+
+``affinitic.smsutils`` is licensed under GNU General Public License, version 2.
+

@@ -4,6 +4,6 @@ exclude bootstrap.py
 exclude buildout.cfg
 exclude gammurc_example
 exclude service_example
-include *.md
+include *.rst
 include setup.py
 recursive-include affinitic
