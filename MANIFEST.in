@@ -7,5 +7,5 @@ exclude service_example
 include *.rst
 include setup.py
 include *.txt
-recursive-include affinitic
+recursive-include affinitic *
 
