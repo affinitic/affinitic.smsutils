@@ -1,0 +1,18 @@
+[gammu]
+port = /dev/mobile
+connection = at
+gammucoding = utf8
+
+[smsd]
+SendTimeout = 10
+service = files
+debuglevel = 255
+RunOnReceive = /opt/sms/bin/receive_sms
+inboxpath = /var/spool/gammu/inbox/
+outboxpath = /var/spool/gammu/outbox/
+sentsmspath = /var/spool/gammu/sent/
+errorsmspath = /var/spool/gammu/error/
+inboxformat = unicode
+outboxformat = unicode
+transmitformat = unicode
+ResetFrequency = 1800
