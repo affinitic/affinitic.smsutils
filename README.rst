@@ -54,6 +54,14 @@ Send sms:
     bin/send_sms
 
 
+Usage with docker
+-----------------
+
+Send sms:
+
+    docker exec -ti affinitic.smsutils /opt/sms/bin/send_sms -s section -m "message"
+
+
 Credits
 -------
 
